@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>デュエマ デッキ編集ツール</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- 他のスタイルやスクリプト -->
+    <title>デュエマ デッキ編集ツール</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .deck-list, .deck-edit {
+            margin-top: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+        .deck-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .deck-edit-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+        }
+        .deck-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 80px); /* 8列のグリッド */
+            grid-template-rows: repeat(5, 112px); /* 5行のグリッド */
+            grid-gap: 5px;
+        }
+        .card-item {
+            width: 80px;
+            height: 112px;
+            background-color: lightgray;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .remove-button, .edit-button {
+            margin-left: 10px;
+        }
+        .card-count {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 2px 5px;
+            font-size: 12px;
+        }
+        .card-list-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .search-bar {
+            margin-bottom: 10px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .card-list {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>デュエマ デッキ編集ツール</h1>
+    
+    <!-- デッキ一覧表示 -->
+    <div class="deck-list" id="deckList">
+        <h2>デッキ一覧</h2>
+        <div class="deck-item">
+            <span>デッキ1</span>
+            <button class="edit-button" onclick="editDeck('デッキ1')">編集</button>
+        </div>
+        <div class="deck-item">
+            <span>デッキ2</span>
+            <button class="edit-button" onclick="editDeck('デッキ2')">編集</button>
+        </div>
+        <!-- 必要に応じて追加 -->
+    </div>
+
+    <!-- デッキ編集ウィンドウ -->
+    <div class="deck-edit" id="deckEdit" style="display: none;">
+        <h2>デッキ編集: <span id="deckName"></span></h2>
+        <button onclick="saveDeck()">保存</button>
+        <button onclick="closeDeckEdit()">閉じる</button>
+        
+        <div class="deck-edit-container">
+            <!-- 上半分：現在のデッキリスト -->
+            <div class="deck-list">
+                <h3>現在のデッキ</h3>
+                <!-- 8×5のグリッド表示 -->
+                <div class="deck-grid" id="currentDeck">
+                    <!-- デッキのカードがここに表示されます -->
+                </div>
+            </div>
+
+            <!-- 下半分：カードリストと検索欄 -->
+            <div class="card-list-section">
+                <h3>カードリスト</h3>
+                <!-- カード名検索用のタブ -->
+                <div class="search-bar">
+                    <input type="text" id="cardSearch" placeholder="カード名で検索">
+                </div>
+                <!-- 横スクロール可能なカードリスト -->
+                <div class="card-list" id="availableCards">
+                    <!-- カードリストがここに表示されます -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+   !-- 追加：card-list.js を deck-edit.js より前に読み込む -->
+<script src="card-list.js"></script>
+<script src="deck-edit.js"></script>
+>
+</body>
+</html>

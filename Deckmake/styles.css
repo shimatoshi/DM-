@@ -1,0 +1,119 @@
+/* デッキ編集コンテナ全体のレイアウト */
+.deck-edit-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 画面の高さいっぱいに */
+    overflow: hidden;
+}
+
+/* 現在のデッキ表示部分（上半分） */
+.deck-grid {
+    height: 50vh; /* 画面の上半分 */
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    padding: 10px;
+    overflow-y: auto; /* スクロール可能に */
+}
+
+/* カードリスト部分（下半分） */
+.card-list-section {
+    height: 50vh; /* 画面の下半分 */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f5f5f5; /* 背景色で区別 */
+}
+
+/* 検索バー */
+.search-bar {
+    width: 100%;
+    padding: 10px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* カードリスト */
+.card-list {
+    flex: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 0;
+    min-height: 200px; /* 最小の高さを確保 */
+}
+
+/* カードアイテム */
+.card-item {
+    flex: 0 0 auto;
+    width: 80px;
+    height: 112px;
+    position: relative;
+}
+
+/*  🟦 追加: デッキ選択ボタンのスタイル */
+#selectDeckButton {
+    margin: 5px;
+}
+
+/*  🟦 追加: デッキ選択ウィンドウのスタイル */
+.deck-select-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+    z-index: 998; /* deck-window, graveyard-window より下に、deck-overlay より上に */
+    display: none; /* 初期状態では非表示 */
+}
+
+.deck-select-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 300px; /* ウィンドウの最大幅を調整 */
+    padding: 20px;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 999; /* deck-overlay より上に */
+}
+
+.deck-select-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+    width: 100%; /* リストをウィンドウ幅に合わせる */
+}
+
+.deck-select-list li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    cursor: pointer; /* ホバー時にカーソルを変更 */
+    text-align: center; /* デッキ名を中央揃え */
+}
+
+.deck-select-list li:hover {
+    background-color: #f0f0f0; /* ホバー時の背景色 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .deck-grid {
+        grid-template-columns: repeat(6, 1fr); /* スマートフォンでは6列に */
+    }
+}
