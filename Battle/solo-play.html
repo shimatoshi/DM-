@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デュエマ1人回しツール</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+   <input type="file" id="deckFileInput" accept=".json" style="display: none;">
+   <button id="showDeck">デッキを選択/山札を表示</button>
+   <button id="drawCard">ドロー</button>
+   <button id="hideDeck" style="display: none;">閉じる</button>
+   <button id="setupbutton">セットアップ</button>
+
+   <div class="deck-select-overlay" id="deckSelectOverlay"></div>
+   <div class="deck-select-window" id="deckSelectWindow" style="display: none;">
+      <h2>デッキを選択してください</h2>
+      <ul class="deck-select-list" id="deckSelectList"></ul>
+      <button id="closeDeckSelectButton">閉じる</button>
+   </div>
+
+   <div class="deck-overlay" id="deckOverlay"></div>
+
+   <div class="game-board">
+      <div class="zone battle-zone">バトルゾーン</div>
+      <div class="zone shield-zone">シールドゾーン</div>
+      <div class="zone mana-zone">マナゾーン</div>
+      <div class="zone hand-container">手札</div>
+      <div class="zone deck">山札</div>
+      <div class="zone graveyard">墓地</div>
+      <div class="graveyard-overlay" id="graveyardOverlay"></div>
+      <div class="graveyard-window" id="graveyardWindow"></div>
+   </div>
+
+   <button id="showGraveyard">墓地を表示</button>
+   <button id="hideGraveyard" style="display: none;">墓地を閉じる</button>
+
+   <script src="card-list.js"></script>
+   <script src="script.js"></script>
+   <a href="main-menu.html" class="menu-button">メインメニューに戻る</a>
+</body>
+</html>
